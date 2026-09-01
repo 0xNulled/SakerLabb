@@ -59,7 +59,7 @@ Rangordna fynden och motivera ordningen med allvarlighetsgrad, exponering och ut
 
 *Skriv här.*
 
-Rangordningen av fynden blir fynd 2, fynd 5, fynd 1, fynd 4, fynd 3. 
+Rangordningen av fynden blir fynd 2, fynd 1, fynd 5, fynd 3, fynd 4. 
 
 Fynd 2 är av högsta prioritet, den har hög allvarlighetsgrad för en anledning då arbiträr användargiven sql kan köras direkt mot databasen. Exponeringsfaktorn blir värre med tanke på att en av sätten att utnyttja denna attackvektor är inloggningssidan, som måste förbli tillgänglig för icke-autentiserade användare då detta är autentiseringsmetoder. Allt som behövs från en attackerade är antingen att besöka sidan med en webbläsare eller att skicka ett rent api anrop med en injektion som kan modifiera, lägga till, eller ta bort sql data. 
 
@@ -76,7 +76,7 @@ Fynd 4 är av allvarlighetsgrad medium för bra anledning. För att detta ska bl
 ## 4. Åtgärder (minst tre)
 
 Använd mönstret nedan per åtgärdat fynd. Varje åtgärd ska gå att spåra tillbaka till ett fynd i tabellen ovan, och beviset efter ska vara en **ny körning av verktyget**, inte din egen kod.
-
+(Lyckades inte få verktygen att köra igen som bevis, så använder bilder som substitut)
 ### Åtgärd 1
 
 ```
@@ -102,12 +102,12 @@ Bevis efter:
 ### Åtgärd 3
 
 ```
-Fynd:
-Plats:
-Bevis före:
-Bedömning:
-Åtgärd:
-Bevis efter:
+Fynd: Fynd 5 - Cross Site Scripting (Reflected)
+Plats: Localhost:5080/login
+Bevis före: Ze-photo's/Bevis-ZAP-XSS-Reflected-pop-up.png
+Bedömning: Verkligt
+Åtgärd: Få inte det försökta användarnamnet att renderas som markdown, vilket tillåter js (f4bfc54db171cf229b27c6c751b76c2be22f2580)
+Bevis efter: Ze-photo's/Bevis-ZAP-NoXSS.png
 ```
 
 ---
