@@ -35,22 +35,22 @@ Fyll i tabellen. Minst ett fynd ska komma från statisk analys (CodeQL) och mins
 | 4 | ZAP | Directory Browsing | Medium (Medium) | Localhost:5080/files | Verkligt |  |
 | 5 | ZAP | Cross Site Scripting (Reflected) | High (Medium) | Localhost:5080/login | Verkligt | Skickar du inloggningslänken som har försökt som användarnamn ett js-script körs det. Den största ledtråden är att länken ser konstig ut. Även om du inte gjort inloggningsförsöket körs koden hos dig om du öppnar länken |
 
-Bevis (skärmbilder eller utdrag), numrerade efter fyndet ovan:
 
-*Klistra in här, eller hänvisa till bilagor.*
 Fynd 1:
-Ze-photo's/XXE-Example.png
-Ze-photo's/XXE-Example-Run.png
+![Alt text](./Ze-photo's/XXE-Example.png)
+![Alt text](./Ze-photo's/XXE-Example-Run.png)
 
 Fynd 2:
-/home/nopie/Projects/repositories/school/SakerLabb/Ze-photo's/SQL-if-Wrong-Username.png
-/home/nopie/Projects/repositories/school/SakerLabb/Ze-photo's/SQL-if-injection.png
-/home/nopie/Projects/repositories/school/SakerLabb/Ze-photo's/SQL-after-successful-injection.png 
+![Alt text](./Ze-photo's/SQL-if-Wrong-Username.png)
+![Alt text](./Ze-photo's/SQL-if-injection.png)
+![Alt text](./Ze-photo's/SQL-after-successful-injection.png)
+
 (Bryter karaktär lite snabbt: jag vet att autentiseringen är helt busted, men det kom inte up på varken av de två skanningarna så för att visa bättre mina resonemang senare låtsas jag att att autentiseringen fungerar alls)
 
 Fynd 5:
-Ze-photo's/Bevis-ZAP-XSS-Reflected-pop-up.png
+![Alt text](./Ze-photo's/Bevis-ZAP-XSS-Reflected-pop-up.png)
 (lösenordet ses inte efter ett misslyckat inloggningsförsök)
+
 ---
 
 ## 3. Prioritering
