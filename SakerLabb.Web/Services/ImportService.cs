@@ -17,10 +17,12 @@ public class ImportService
 
     public string ImportXml(string xml)
     {
-        var settings = new XmlReaderSettings
+        try
         {
-            DtdProcessing = DtdProcessing.Parse,
-            XmlResolver = new XmlUrlResolver()
+            var settings = new XmlReaderSettings
+        {
+            DtdProcessing = DtdProcessing.Prohibit,
+            XmlResolver = null
         };
 
         var document = new XmlDocument { XmlResolver = new XmlUrlResolver() };
@@ -28,6 +30,12 @@ public class ImportService
         document.Load(reader);
 
         return document.DocumentElement?.InnerText ?? "";
+        }
+        catch
+        {
+            return "Error reading the XML. DTD object prohibited";
+        }
+        
     }
 
     public object? ImportJson(string json)
