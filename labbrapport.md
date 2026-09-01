@@ -80,12 +80,12 @@ Använd mönstret nedan per åtgärdat fynd. Varje åtgärd ska gå att spåra t
 ### Åtgärd 1
 
 ```
-Fynd:        (nr och regel-id/alert från tabellen ovan)
-Plats:       (fil och rad, eller URL)
-Bevis före:  (skärmbild eller rapportutdrag som visar fyndet)
-Bedömning:   (verkligt eller falskt positivt, kort motiverat)
-Åtgärd:      (vad du ändrade, med commit-hash)
-Bevis efter: (ny körning: CodeQL-alerten står som Fixed, eller ZAP-larmet är borta ur den nya rapporten)
+Fynd: Fynd 1 - cs/xml/insecure-dtd-handeling
+Plats: SakerLabb.Web/Services/ImportService.cs: 22-23
+Bevis före:  Ze-photo's/XXE-Example.png Ze-photo's/XXE-Example-Run.png
+Bedömning:   Verkligt. Koden explicit tillåter läsning av externa resurser och DTD hantering och input blir inte sanitizerad under processen.
+Åtgärd:      Ändrade så att DTD objekt och hantering av externa resurser genom Xmlresolver returerar null. Inte strikt nödvändigt för fixen men satte en try catch runtom så om någon försöker får dem ett vagt error message istället för en stacktrace (cfe4a8aa90c1737859f980df844930906c6b2ab8)
+Bevis efter: Ze-photo's/XXE-After-Fix.png
 ```
 
 ### Åtgärd 2
@@ -94,7 +94,7 @@ Bevis efter: (ny körning: CodeQL-alerten står som Fixed, eller ZAP-larmet är 
 Fynd: Fynd 2 - cs/sql-injection
 Plats: SakerLabb.Web/Data/UserRepository: 38
 Bevis före: Ze-photo's/SQL-if-injection.png Ze-photo's/SQL-after-successful-injection.png
-Bedömning: Verklig
+Bedömning: Verklig. Username input konkatineras utan sanitisering och därmed blir del av kommandot
 Åtgärd: Istället för att konkatinera Username input som en sträng i SQL kommandot lägger vi till en variabel som får värdet av det inputet, därmed parametrisera inputen. (2488f77e79f01c35aff023180d7866d3dd775bf6)
 Bevis efter: Ze-photo's/SQL-after-fix.png
 ```
@@ -105,7 +105,7 @@ Bevis efter: Ze-photo's/SQL-after-fix.png
 Fynd: Fynd 5 - Cross Site Scripting (Reflected)
 Plats: Localhost:5080/login
 Bevis före: Ze-photo's/Bevis-ZAP-XSS-Reflected-pop-up.png
-Bedömning: Verkligt
+Bedömning: Verkligt. Användarnamn renderas som markdown på klientens websida utan sanitisering.
 Åtgärd: Få inte det försökta användarnamnet att renderas som markdown, vilket tillåter js (f4bfc54db171cf229b27c6c751b76c2be22f2580)
 Bevis efter: Ze-photo's/Bevis-ZAP-NoXSS.png
 ```
