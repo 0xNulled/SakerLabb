@@ -91,12 +91,12 @@ Bevis efter: (ny körning: CodeQL-alerten står som Fixed, eller ZAP-larmet är 
 ### Åtgärd 2
 
 ```
-Fynd:
-Plats:
-Bevis före:
-Bedömning:
-Åtgärd:
-Bevis efter:
+Fynd: Fynd 2 - cs/sql-injection
+Plats: SakerLabb.Web/Data/UserRepository: 38
+Bevis före: Ze-photo's/SQL-if-injection.png Ze-photo's/SQL-after-successful-injection.png
+Bedömning: Verklig
+Åtgärd: Istället för att konkatinera Username input som en sträng i SQL kommandot lägger vi till en variabel som får värdet av det inputet, därmed parametrisera inputen. (2488f77e79f01c35aff023180d7866d3dd775bf6)
+Bevis efter: Ze-photo's/SQL-after-fix.png
 ```
 
 ### Åtgärd 3
